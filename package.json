@@ -1,0 +1,31 @@
+{
+  "name": "p1-final-giftr-rach0022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=giftr* PORT=6060 nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MAD9124-W20/p1-final-giftr-rach0022.git"
+  },
+  "keywords": [],
+  "author": "Ravi Rachamalla <rach0022@algonquinlive.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MAD9124-W20/p1-final-giftr-rach0022/issues"
+  },
+  "homepage": "https://github.com/MAD9124-W20/p1-final-giftr-rach0022#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.6",
+    "nodemon": "^2.0.2",
+    "xss": "^1.0.6"
+  }
+}
