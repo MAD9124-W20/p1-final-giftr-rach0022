@@ -16,6 +16,13 @@ errors = [
         title: 'Validation Error',
         detail: "The email address 'douglasadams@fourtytwo.com' is already registered",
         source: {pointer: '/data/attributes/email', value: 'douglasadams@fourtytwo.com'}
+    },
+    {
+        status: 'Bad Request',
+        code: '400',
+        title: 'Validation Error',
+        description: 'Invalid Bearer Token',
+        source: {pointer: '/data/attributes/request', value: 'token'}  //ASK ROBERT ABOUT THIS
     }
 ];
 
