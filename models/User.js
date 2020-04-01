@@ -42,9 +42,9 @@ const schema = new mongoose.Schema({
     }
 }, {
     //make mongoose use unix time, taken form mongoose docs
-    timestamps: {
-        currentTime: () => Math.floor(Date.now / 1000)
-    }
+    timestamps: true //{
+        //currentTime: () => Math.floor(Date.now() / 1000)
+    // }
 });
 
 //create a method on the user to generate the Authorization token
@@ -62,13 +62,13 @@ schema.statics.authenticate = async function(email, password){
     //we will use a dummy password that has a similar length for comparison checks
     //as to allow no users to figure out if their password is right or not by time taken checking the password
     const hashedPassword = user ? user.password : `$2b$${saltRounds}$invalidusernameaaaaaaaaa4R36Y7Uaaaaaaaaaaaaaaaaaaaaaa`;
-    debug(password, user.password);
+    // debug(password, user.password);
     const passwordsDidMatch = await bcrypt.compare(password, hashedPassword); //now use the bcrypt compare function to check the supplied password vs the hashed
     return passwordsDidMatch ? user : null; //now return the user or null if the passwordsdid match
 };
 
 //fucntion to encrypt the password when a newUser is saved into the database
-schema.pre('save', async function(next) {
+schema.pre(['save', 'findByIdAndUpdate'], async function(next) {
 
     //if the password is not modified, go to the next function and do not encrypt it again
     if(!this.isModified('password')){
