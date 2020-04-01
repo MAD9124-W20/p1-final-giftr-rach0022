@@ -1,7 +1,8 @@
 ### To Do Logically Next:
 - [x] Add any custom error Events necessary and the Express Error Handler Middleware to reduce the amount of code in routers. https://mad9124-w20.github.io/modules/week10/#express-error-handler-middleware
 - [x] Add in the User model and router module (to test user model)
-- [ ] Add in the person and the gift models
+- [x] Add in the person and the gift models
+- [ ] Add in middleware to validate the person and gift id (so people cant tamper with our database when we update the info)
 - [x] Add the following in for the model to allow timestamp logging: 
 ````json
 {
