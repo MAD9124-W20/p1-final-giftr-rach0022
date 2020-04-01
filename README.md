@@ -14,6 +14,30 @@
 - [x] add PATCH route (to change password /auth/users/me) || having difficulties, first get the happy path (user is logged in and supplies a new password) working first, then add in the check for the old password and also the email for the account || nevermind while coding the happy path i figured out how to make sure the usr is the same as the logged in user and make the user have to supply the email and password
 - [ ] now to add the person model and a gift model to test out the person and gift routes
 
+### Person Router:
+- [ ] Implemented
+- [ ] GET all people (owned by user)
+- [ ] GET single person (owned by user)
+- [ ] POST create a person
+- [ ] PUT replace a person
+- [ ] PATCH update a person
+- [ ] DELETE a single person, owned by the user
+- [ ] users should only be able to see their own people (check the authorize middleware userid, vs the gift person owner id, possibly use a map function to trim them all out)
+
+### Gift Router:
+- [ ] Implemented
+- [ ] POST create a gift
+- [ ] PATCH update a gift
+- [ ] DELETE a gift 
+- [ ] users should only be able to see and act on gifts associated to their people
+
+## Auth Router:
+- [x] Implemented
+- [x] POST register user
+- [x] GET currently logged in user
+- [x] PATCH update password
+- [x] POST login user (generate token)
+
 ### NPM Packages Needed:
 
 - [x] brcypt

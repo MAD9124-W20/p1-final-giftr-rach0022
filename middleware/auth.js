@@ -1,3 +1,4 @@
+//middleware/auth
 const JWT = require('jsonwebtoken');
 const JWTPrivateKey = "superSecureSecretToChangeLater"; //REALLY NEED TO CHANGE THIS LATER
 const UnauthorizedException = require('../exceptions/Unauthorized.js');

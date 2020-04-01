@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
         ref: 'User'
     }],
     gifts: [{
-        type: mongoose.schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Gift'
     }],
     imageURL: {
