@@ -5,7 +5,7 @@ const validatePersonId = require('../middleware/validatePersonId.js');
 const Person = require('../models/Person.js');
 const sanitizeBody = require('../middleware/sanitizeBody.js');
 // const ForbiddenException = require('../exceptions/Forbidden.js');
-const isPersonOwnedOrShared = require('../middleware/isPersonOwnedOrShared.js');
+const isPersonOwnedOrShared = require('../middleware/isOwnedOrShared.js');
 const isOwnedByUser = require('../middleware/isOwnedByUser.js');
 
 //possibly add an is owner middleware
@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) =>{
 //it reach this code to findbyId
 router.get('/:personId', isPersonOwnedOrShared, async (req, res, next) =>{
     // try{
-    const person = await Person.findById(req.personId).populate('gifts');
+    const person = await Person.findById(req.personId).populate('gifts owner sharedWith');
     debug(req.personId, person);
         //if the user owns the person or the person is shared with the user
         // if(person.owner == req.user._id || person.sharedWith.findIndex(id => id == req.user._id) != -1){
@@ -91,7 +91,7 @@ router.patch('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res,
 //will have to go through all gifts and delete them as well, possibly before deleting
 router.delete('/:personId', isOwnedByUser, async (req, res, next) =>{
     try{
-        const deleted_person = await Person.findByIdAndDelete(req.personId);
+        const deleted_person = await Person.findByIdAndRemove(req.personId);
         debug(deleted_person);
         res.status(202).send({data: deleted_person});
     } catch(err){

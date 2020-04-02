@@ -17,7 +17,7 @@ app.use('/auth', require('./routes/auth.js')); //use the auth route to create an
 //add the person and the gift routes (gift routes need to validate the person id)
 //they are both authorized routes that can onlhy be accessed if the user is logged in
 app.use('/api/people', authorize, require('./routes/person.js'));
-app.use('/api/people/:personId/gifts', authorize, require('./routes/gift.js'));
+app.use('/api/people', authorize, require('./routes/gift.js'));
 
 //register the error handler and the error logger (to be done)
 app.use(require('./middleware/logErrors.js')); //log the errors before we pass it to the middle ware
