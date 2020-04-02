@@ -13,7 +13,6 @@ router.use(':giftId', validateGiftId); //make sure the gift id is validated
 
 //create a new gift
 router.post('/', sanitizeBody, async (req, res, next) =>{
-
 });
 
 //update a gift with new values

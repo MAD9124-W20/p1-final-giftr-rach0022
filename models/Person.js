@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
         required: true, 
         maxlength: 254
     },
-    birthDate: {
+    birthdate: {
         type: Date, 
         required: true
     },
