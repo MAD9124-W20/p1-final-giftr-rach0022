@@ -22,8 +22,10 @@ router.get('/', async (req, res, next) =>{
 //gift ideas populated
 router.get('/:personId', async (req, res, next) =>{
     try{
-        const person = await Person.findById(personId).populate('gifts');
-        if(person._id == req.user._id){
+        const person = await Person.findById(req.personId).populate('gifts');
+        debug(req.personId, person);
+        //if the user owns the person or the person is shared with the user
+        if(person.owner == req.user._id || person.sharedWith.findIndex(id => id == req.user._id) != -1){
             res.status(200).send({data: person})
         } else {
             throw new ForbiddenException('', 'You do not own this person');
