@@ -1,3 +1,6 @@
+### Bugs: 
+- [ ] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert
+
 ### To Do Logically Next:
 - [x] Add any custom error Events necessary and the Express Error Handler Middleware to reduce the amount of code in routers. https://mad9124-w20.github.io/modules/week10/#express-error-handler-middleware
 - [x] Add in the User model and router module (to test user model)
@@ -16,13 +19,14 @@
 
 ### Person Router:
 - [ ] Implemented
-- [ ] GET all people (owned by user)
-- [ ] GET single person (owned by user)
-- [ ] POST create a person
+- [x] GET all people (owned by user)
+- [x] GET single person (owned by user)
+- [x] POST create a person
 - [ ] PUT replace a person
-- [ ] PATCH update a person
-- [ ] DELETE a single person, owned by the user
+- [x] PATCH update a person
+- [x] DELETE a single person, owned by the user
 - [ ] users should only be able to see their own people (check the authorize middleware userid, vs the gift person owner id, possibly use a map function to trim them all out)
+- [ ] create middleware to check if a person is owned by a user or is a person is owned/shared by a user
 
 ### Gift Router:
 - [ ] Implemented

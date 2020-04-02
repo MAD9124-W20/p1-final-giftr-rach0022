@@ -36,4 +36,11 @@ const schema = new mongoose.Schema({
     timestamps: true
 });
 
+// schema.pre(['find', 'findByIdAndUpdate'], async function(next){
+//     //first get the document using the this.getQuery() from mongoose docs
+//     data = await this.model.findOne(this.getQuery());
+//     if(data.owner == )
+//     next();
+// })
+
 module.exports = mongoose.model('Person', schema);

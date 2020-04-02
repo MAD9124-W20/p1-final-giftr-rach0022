@@ -68,7 +68,7 @@ schema.statics.authenticate = async function(email, password){
 };
 
 //fucntion to encrypt the password when a newUser is saved into the database
-schema.pre(['save', 'findByIdAndUpdate'], async function(next) {
+schema.pre(['save'], async function(next) {
 
     //if the password is not modified, go to the next function and do not encrypt it again
     if(!this.isModified('password')){
