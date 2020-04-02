@@ -64,12 +64,9 @@ router.put('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, n
             runValidators: true,
             overwrite: true,
             useFindAndModify: false //taken from mongo docs
-        },
-        (err, data) => {
-            debug(err, data);
-            res.status(200).send({data})
         }
-    )
+    );
+    res.status(200).send({data: person});
 });
 
 router.patch('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, next) =>{
