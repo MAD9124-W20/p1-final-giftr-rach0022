@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) =>{
 //it reach this code to findbyId
 router.get('/:personId', isPersonOwnedOrShared, async (req, res, next) =>{
     // try{
-    const person = await Person.findById(req.personId).populate('gifts owner sharedWith');
+    const person = await Person.findById(req.personId).populate('owner sharedWith');
     debug(req.personId, person);
         //if the user owns the person or the person is shared with the user
         // if(person.owner == req.user._id || person.sharedWith.findIndex(id => id == req.user._id) != -1){

@@ -1,4 +1,5 @@
-const Gift = require('../models/Gift.js');
+// const Gift = require('../models/Gift.js');
+const Person = require('../models/Person.js')
 const ResourceNotFoundException = require('../exceptions/ResourceNotFound.js')
 const debug = require('debug')('giftr:Gift ID Validation');
 
@@ -8,10 +9,20 @@ module.exports = async (req, res, next) =>{
     //get the id from the parameter of the url request or from the sanitizedBody if not supplied
     const giftId = req.params.giftId; // ? req.params.giftId : req.sanitizedBody.giftId;
     debug(req.params);
-    const match = await Gift.findById(giftId, (err, data)=>{
+
+    //find a match to the person from the person id validation
+    const match = await Person.findById(req.personId, (err, data)=>{
         if(err || !data) next(new ResourceNotFoundException("No Gift Match", "No gift in the database was matched with this id"));
-        req.giftId = giftId;
+        
+        //if the id can find a match in the gifts array set the gift id and call next
+        if(data.gifts.id(giftId)) {
+            req.giftId = giftId;
+            next();
+        } else { //no match
+            next(new ResourceNotFoundException("No Gift Match", "No gift in the database was matched with this id"));
+        }
+        
         // debug(req.giftId);
-        next();
+        
     });
 }

@@ -23,10 +23,7 @@ const schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
-    gifts: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Gift'
-    }],
+    gifts: [Gift.schema], //using Gifts as a sub document
     imageURL: {
         type: String,
         trim: true,

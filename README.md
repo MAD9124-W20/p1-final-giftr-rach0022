@@ -3,13 +3,16 @@
 
 ### Changes to Make For the Final:
 - [ ] make gifts a sub document, ask robert to go over what changes i need to make
+    - change [x] PUT [ ] PATCH [x] DELETE gift routes
+    - change [x] get/:id person route to not populate gifts, as it will already be populated
+    - change [x] validate gift id middleware to now take reference to the fact gifts are sub documents
 - [ ] udpate the validate id function to use mongoose.Types.ObjectId.isValid(id)
 - [ ] use winston for logging 
 - [ ] use NODE_ENV to set enviroment variables
 - [ ] use configuration settings based on MAD9124 Week 11 Production testing
 - [ ] Generate a JWT key using week 11
 - [x] start compressing the payloads by using the npm package compression
-- [ ] update all my security middleware as per the wekk 11 guidelines
+- [ ] update all my security middleware as per the week 11 guidelines
 
 ### Questions for Robert:
 - [ ] Should I be removing the owner property out of PATCH?
