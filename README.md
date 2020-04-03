@@ -9,11 +9,12 @@
     - change [x] validate gift id middleware to now take reference to the fact gifts are sub documents
 - [ ] update the validate id function to use mongoose.Types.ObjectId.isValid(id)
 - [x] use winston for logging 
-- [ ] use NODE_ENV to set enviroment variables
-- [ ] use configuration settings based on MAD9124 Week 11 Production testing
-- [ ] Generate a JWT key using week 11
+- [x] use NODE_ENV to set enviroment variables
+- [x] use configuration settings based on MAD9124 Week 11 Production testing
+- [x] Generate a JWT key using node genKey.js
 - [x] start compressing the payloads by using the npm package compression
-- [ ] update all my security middleware as per the week 11 guidelines
+- [x] update all my security middleware as per the week 11 guidelines
+- [ ] look into helmet to see if it worth using
 
 ### Questions for Robert:
 - [ ] Should I be removing the owner property out of PATCH?
