@@ -20,6 +20,7 @@
   "homepage": "https://github.com/MAD9124-W20/p1-final-giftr-rach0022#readme",
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "compression": "^1.7.4",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.0.0",

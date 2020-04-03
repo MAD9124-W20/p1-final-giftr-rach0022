@@ -4,10 +4,13 @@
 const debug = require('debug')('giftr:App');
 const sanitizeMongo = require('express-mongo-sanitize');
 const express = require('express');
-const validatePersonId = require('./middleware/validatePersonId.js');
+// const validatePersonId = require('./middleware/validatePersonId.js');
 const authorize = require('./middleware/auth.js');
 require('./startup/database.js')(); //IIFE use of the require statement
 const app = express();
+
+//compress our payloads in the app
+// app.use(require('compression'));
 
 //we will throw the authorization middleware onto all friend and gift routes
 app.use(express.json()); //allow the app to use json() parser for the requests

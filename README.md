@@ -8,7 +8,7 @@
 - [ ] use NODE_ENV to set enviroment variables
 - [ ] use configuration settings based on MAD9124 Week 11 Production testing
 - [ ] Generate a JWT key using week 11
-- [ ] start compressing the payloads by using the npm package compression
+- [x] start compressing the payloads by using the npm package compression
 - [ ] update all my security middleware as per the wekk 11 guidelines
 
 ### Questions for Robert:
@@ -61,7 +61,10 @@
 - [x] xss
 - [x] validator (for email address formats and what not)
 - [x] mongoose-unique-validator (for checking if emails are unique or just use coundDocuments)
-
+- [x] compression
+- [ ] cors
+- [ ] helmet
+ 
 ### (DROPPED) To Do Logically Next:
 - [x] Add any custom error Events necessary and the Express Error Handler Middleware to reduce the amount of code in routers. https://mad9124-w20.github.io/modules/week10/#express-error-handler-middleware
 - [x] Add in the User model and router module (to test user model)
