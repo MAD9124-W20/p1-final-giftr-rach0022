@@ -1,12 +1,14 @@
 //43quire all the modules needed
-const debug = require('debug')('giftr:user-model')
+// const debug = require('debug')('giftr:user-model')
+const config = require('config');
 const bcrypt = require('bcrypt');
-const saltRounds = 14;
+// const saltRounds = 14;
 const mongoose = require('mongoose');
 const validator = require('validator'); //checks if the email is the right format currently
 const uniqueValidator = require('mongoose-unique-validator'); //checks if the email is unique
 const JWT = require('jsonwebtoken');
-const JWTPrivateKey = 'superSecureSecretToChangeLater';
+const JWTConfig = config.get('JWT');
+const JWTPrivateKey = JWTConfig.secretkey;
 
 //create the schema definition : testing password articforce42
 const schema = new mongoose.Schema({
@@ -49,6 +51,8 @@ const schema = new mongoose.Schema({
 
 //create a method on the user to generate the Authorization token
 schema.methods.generateAuthToken = function(){
+    console.log(JWTConfig);
+
     return JWT.sign({_id: this.id}, JWTPrivateKey); //change this later to not using a variable
 };
 
@@ -61,7 +65,7 @@ schema.statics.authenticate = async function(email, password){
     //now create a hashedpassword, which if the user was found its the user.password otherwise
     //we will use a dummy password that has a similar length for comparison checks
     //as to allow no users to figure out if their password is right or not by time taken checking the password
-    const hashedPassword = user ? user.password : `$2b$${saltRounds}$invalidusernameaaaaaaaaa4R36Y7Uaaaaaaaaaaaaaaaaaaaaaa`;
+    const hashedPassword = user ? user.password : `$2b$${JWTConfig.saltRounds}$invalidusernameaaaaaaaaa4R36Y7Uaaaaaaaaaaaaaaaaaaaaaa`;
     // debug(password, user.password);
     const passwordsDidMatch = await bcrypt.compare(password, hashedPassword); //now use the bcrypt compare function to check the supplied password vs the hashed
     return passwordsDidMatch ? user : null; //now return the user or null if the passwordsdid match
@@ -76,7 +80,7 @@ schema.pre(['save'], async function(next) {
     }
 
     //encrypting the password if it is modified and then calling the next function in the stack
-    this.password = await bcrypt.hash(this.password, saltRounds);
+    this.password = await bcrypt.hash(this.password, JWTConfig.saltRounds);
     next();
 });
 

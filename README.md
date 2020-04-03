@@ -7,8 +7,8 @@
     - change [x] PUT [ ] PATCH [x] DELETE gift routes || ASK Robert about my patch method
     - change [x] get/:id person route to not populate gifts, as it will already be populated
     - change [x] validate gift id middleware to now take reference to the fact gifts are sub documents
-- [ ] udpate the validate id function to use mongoose.Types.ObjectId.isValid(id)
-- [ ] use winston for logging 
+- [ ] update the validate id function to use mongoose.Types.ObjectId.isValid(id)
+- [x] use winston for logging 
 - [ ] use NODE_ENV to set enviroment variables
 - [ ] use configuration settings based on MAD9124 Week 11 Production testing
 - [ ] Generate a JWT key using week 11
@@ -69,6 +69,7 @@
 - [ ] cors
 - [ ] helmet
 - [x] winston
+- [x] config
  
 ### (DROPPED) To Do Logically Next:
 - [x] Add any custom error Events necessary and the Express Error Handler Middleware to reduce the amount of code in routers. https://mad9124-w20.github.io/modules/week10/#express-error-handler-middleware

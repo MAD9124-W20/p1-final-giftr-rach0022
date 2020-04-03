@@ -1,0 +1,11 @@
+{
+    "name": "GIFTR-RACH0022",
+    "db": {
+      "host": "localhost",
+      "port": "27017",
+      "dbName": "mad9124-rach0022"
+    },
+    "JWT": {
+      "saltRounds": 14
+    }
+}

@@ -1,10 +1,12 @@
 // const debug = require('debug')('giftr:database-startup');
-const logger = require('./logger.js')
+const logger = require('./logger.js');
+const config = require('config');
 const mongoose = require('mongoose');
+const dbConfig = config.get('db');
 
 module.exports = () =>{
     mongoose
-    .connect('mongodb://localhost:27017/mad9124', {
+    .connect(`mongodb://${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

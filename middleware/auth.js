@@ -1,6 +1,7 @@
 //middleware/auth
 const JWT = require('jsonwebtoken');
-const JWTPrivateKey = "superSecureSecretToChangeLater"; //REALLY NEED TO CHANGE THIS LATER
+const config = require('config');
+const JWTPrivateKey = config.get('JWT').secretkey; //REALLY NEED TO CHANGE THIS LATER
 const UnauthorizedException = require('../exceptions/Unauthorized.js');
 
 const parseToken = function(headerValue){
