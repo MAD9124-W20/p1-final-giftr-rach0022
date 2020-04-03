@@ -1,4 +1,5 @@
-const debug = require('debug')('giftr:Sanitize');
+const logger = require('../startup/logger.js');
+// const debug = require('debug')('giftr:Sanitize');
 const xss = require('xss'); //may have to use let if const dosent work
 
 const stripTags = payload => {
@@ -35,6 +36,6 @@ module.exports = (req,res,next) => {
     const sanitizedBody = stripTags(attributes);
 
     req.sanitizedBody = sanitizedBody; //set the new sanitized body without mutating the original data
-    debug(req.body);
+    logger.log('info',req.body);
     next(); //call the next function in the request loop
 }

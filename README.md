@@ -1,9 +1,10 @@
 ### Bugs: 
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
+- [ ] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
 
 ### Changes to Make For the Final:
 - [ ] make gifts a sub document, ask robert to go over what changes i need to make
-    - change [x] PUT [ ] PATCH [x] DELETE gift routes
+    - change [x] PUT [ ] PATCH [x] DELETE gift routes || ASK Robert about my patch method
     - change [x] get/:id person route to not populate gifts, as it will already be populated
     - change [x] validate gift id middleware to now take reference to the fact gifts are sub documents
 - [ ] udpate the validate id function to use mongoose.Types.ObjectId.isValid(id)
@@ -67,6 +68,7 @@
 - [x] compression
 - [ ] cors
 - [ ] helmet
+- [x] winston
  
 ### (DROPPED) To Do Logically Next:
 - [x] Add any custom error Events necessary and the Express Error Handler Middleware to reduce the amount of code in routers. https://mad9124-w20.github.io/modules/week10/#express-error-handler-middleware

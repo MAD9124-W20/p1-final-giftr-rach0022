@@ -1,6 +1,7 @@
 //first require all modules necessary
 const router = require('express').Router();
-const debug = require('debug')('giftr:authorization-router');
+// const debug = require('debug')('giftr:authorization-router');
+const logger = require('../startup/logger.js');
 const User = require('../models/User.js'); //grab the user model
 const sanitizeBody = require('../middleware/sanitizeBody.js'); //grab the sanitization middleware to nuke the bodys of all request
 const authorize = require('../middleware/auth.js'); //added authorization middleware using error handler and custome exceptions

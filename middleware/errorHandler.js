@@ -1,6 +1,7 @@
 //error handler middle ware
 //similar to other middleware except it also takes the error (err param)
-const debug = require('debug')('giftr:ErrorHandler')
+// const logger = require('../startup/logger.js');
+// const debug = require('debug')('giftr:ErrorHandler')
 //errrors object that is an array that we can iterate over
 errors = [
     {

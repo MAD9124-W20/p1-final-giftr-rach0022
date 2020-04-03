@@ -1,6 +1,7 @@
 //routes/person
 const router = require('express').Router();
-const debug = require('debug')('giftr-PERSON ROUTER');
+// const debug = require('debug')('giftr-PERSON ROUTER');
+const logger = require('../startup/logger.js');
 const validatePersonId = require('../middleware/validatePersonId.js');
 const Person = require('../models/Person.js');
 const sanitizeBody = require('../middleware/sanitizeBody.js');
@@ -27,7 +28,7 @@ router.get('/', async (req, res, next) =>{
 router.get('/:personId', isPersonOwnedOrShared, async (req, res, next) =>{
     // try{
     const person = await Person.findById(req.personId).populate('owner sharedWith');
-    debug(req.personId, person);
+    logger.log('info',req.personId, person);
         //if the user owns the person or the person is shared with the user
         // if(person.owner == req.user._id || person.sharedWith.findIndex(id => id == req.user._id) != -1){
     res.status(200).send({data: person})
@@ -55,7 +56,7 @@ router.put('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, n
     //how to check if the person owns the document being updated
     //put the owner on the sanitized body from the auth token
     req.sanitizedBody.owner = req.user._id;
-    debug(req.sanitizedBody, req.personId);
+    logger.log('info',req.sanitizedBody, req.personId);
     const person = await Person.findByIdAndUpdate(
         req.personId,
         req.sanitizedBody,
@@ -79,7 +80,7 @@ router.patch('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res,
             useFindAndModify: false //taken from mongo docs
         },
         (err, data) => {
-            debug(err, data);
+            logger.log('info',err, data);
             if(err) next(err); //if an error occurs send it to error handler
             res.status(200).send({data})
         }
@@ -92,7 +93,7 @@ router.patch('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res,
 router.delete('/:personId', isOwnedByUser, async (req, res, next) =>{
     try{
         const deleted_person = await Person.findByIdAndRemove(req.personId);
-        debug(deleted_person);
+        logger.log('info',deleted_person);
         res.status(202).send({data: deleted_person});
     } catch(err){
         next(err);

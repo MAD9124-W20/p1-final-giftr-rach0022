@@ -1,7 +1,8 @@
 // Don't forget to use NPM to install Express and Mongoose.
 'use strict';
 
-const debug = require('debug')('giftr:App');
+// const debug = require('debug')('giftr:App');
+const logger = require('./startup/logger.js');
 const sanitizeMongo = require('express-mongo-sanitize');
 const express = require('express');
 // const validatePersonId = require('./middleware/validatePersonId.js');
@@ -28,4 +29,4 @@ app.use(require('./middleware/errorHandler.js'));
 
 
 const port = process.env.PORT || 3030;
-app.listen(port, () => debug(`Server listening on port: ${port}`));
+app.listen(port, () => logger.log('info',`Server listening on port: ${port}`));

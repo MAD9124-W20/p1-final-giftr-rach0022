@@ -1,4 +1,5 @@
-const debug = require('debug')('giftr:database-startup');
+// const debug = require('debug')('giftr:database-startup');
+const logger = require('./logger.js')
 const mongoose = require('mongoose');
 
 module.exports = () =>{
@@ -7,9 +8,9 @@ module.exports = () =>{
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(()=> debug('Connected to MongoDB...'))
+    .then(()=> logger.log('info', 'Connected to MongoDB...'))
     .catch(err =>{
-        debug('Problem connecting to MongoDB', err);
+        logger.log('error', 'Problem connecting to MongoDB', err);
         process.exit(1);
     });
 };
