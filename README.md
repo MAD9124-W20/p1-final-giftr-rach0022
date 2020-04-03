@@ -66,7 +66,7 @@
 - [x] validator (for email address formats and what not)
 - [x] mongoose-unique-validator (for checking if emails are unique or just use coundDocuments)
 - [x] compression
-- [ ] cors
+- [x] cors
 - [ ] helmet
 - [x] winston
 - [x] config

@@ -51,7 +51,7 @@ const schema = new mongoose.Schema({
 
 //create a method on the user to generate the Authorization token
 schema.methods.generateAuthToken = function(){
-    console.log(JWTConfig);
+    // console.log(config.get('JWT'));
 
     return JWT.sign({_id: this.id}, JWTPrivateKey); //change this later to not using a variable
 };

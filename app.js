@@ -10,6 +10,8 @@ const authorize = require('./middleware/auth.js');
 require('./startup/database.js')(); //IIFE use of the require statement
 const app = express();
 
+//allow cors requests
+app.use(require('cors')());
 //compress our payloads in the app
 app.use(require('compression')());
 

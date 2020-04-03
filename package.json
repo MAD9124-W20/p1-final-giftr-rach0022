@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=giftr* PORT=6060 nodemon app.js"
+    "dev": "DEBUG=giftr* PORT=6060 NODE_ENV=development nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "bcrypt": "^4.0.1",
     "compression": "^1.7.4",
     "config": "^3.3.1",
+    "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.0.0",
