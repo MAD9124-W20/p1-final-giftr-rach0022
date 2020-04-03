@@ -1,6 +1,16 @@
 ### Bugs: 
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
 
+### Changes to Make For the Final:
+- [ ] make gifts a sub document, ask robert to go over what changes i need to make
+- [ ] udpate the validate id function to use mongoose.Types.ObjectId.isValid(id)
+- [ ] use winston for logging 
+- [ ] use NODE_ENV to set enviroment variables
+- [ ] use configuration settings based on MAD9124 Week 11 Production testing
+- [ ] Generate a JWT key using week 11
+- [ ] start compressing the payloads by using the npm package compression
+- [ ] update all my security middleware as per the wekk 11 guidelines
+
 ### Questions for Robert:
 - [ ] Should I be removing the owner property out of PATCH?
 - [ ] Should I be changing the password if and only if I am supplied the correct email and original password as well
