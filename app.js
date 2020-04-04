@@ -12,6 +12,7 @@ const app = express();
 
 //allow cors requests
 app.use(require('cors')());
+app.use(require('helmet')());
 //compress our payloads in the app
 app.use(require('compression')());
 
