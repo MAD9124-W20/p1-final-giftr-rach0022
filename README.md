@@ -1,10 +1,10 @@
 ### Bugs: 
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
-- [ ] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
+- [x] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
 
 ### Changes to Make For the Final:
-- [ ] make gifts a sub document, ask robert to go over what changes i need to make
-    - change [x] PUT [ ] PATCH [x] DELETE gift routes || ASK Robert about my patch method
+- [x] make gifts a sub document, ask robert to go over what changes i need to make
+    - change [x] PUT [x] PATCH [x] DELETE gift routes || ASK Robert about my patch method
     - change [x] get/:id person route to not populate gifts, as it will already be populated
     - change [x] validate gift id middleware to now take reference to the fact gifts are sub documents
 - [ ] update the validate id function to use mongoose.Types.ObjectId.isValid(id)
