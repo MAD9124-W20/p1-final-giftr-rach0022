@@ -14,7 +14,7 @@
 - [x] Generate a JWT key using node genKey.js
 - [x] start compressing the payloads by using the npm package compression
 - [x] update all my security middleware as per the week 11 guidelines
-- [ ] look into helmet to see if it worth using
+- [x] look into helmet to see if it worth using
 
 ### Questions for Robert:
 - [ ] Should I be removing the owner property out of PATCH?
@@ -68,7 +68,7 @@
 - [x] mongoose-unique-validator (for checking if emails are unique or just use coundDocuments)
 - [x] compression
 - [x] cors
-- [ ] helmet
+- [x] helmet
 - [x] winston
 - [x] config
  
