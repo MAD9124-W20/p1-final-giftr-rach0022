@@ -32,26 +32,16 @@ router.post('/:personId/gifts', sanitizeBody, async (req, res, next) =>{
 //because the personId is verified, the giftId is verified, the user is authorized
 //and the request is sanitized we have allthe validation done so now we can just code the happy path
 //of update the gift
-// router.patch('/:personId/gifts/:giftId', sanitizeBody, async (req, res, next) =>{
-//     // res.status(200).send({data: req.params});
-//     logger.log('info',req.giftId);
-//     // const updatedGift = await Person.gifts.findByIdAndUpdate(
-//     //     req.giftId, 
-//     //     req.sanitizedBody,
-//     //     {
-//     //         new: true,
-//     //         runValidators: true,
-//     //         useFindAndModify: false
-//     //     }
-//     // );
-//     const person = await Person.findById(req.personId);
-//     const updatedGift = Object.assign({}, person.gifts.id(req.giftId), req.sanitizedBody);
-//     const update = person.gifts.create(updatedGift);
-//     debug(person.gifts.id(req.giftId))// = updatedGift; 
-//     await person.save();
+router.patch('/:personId/gifts/:giftId', sanitizeBody, async (req, res, next) =>{
+    // res.status(200).send({data: req.params});
+    // logger.log('info',req.giftId);
 
-//     res.status(200).send({data: update});
-// });
+    const friend = await Person.findById(req.personId);
+    friend.gifts.id(req.giftId).set(req.sanitizedBody); //found in mongoose docs
+    await friend.save();
+
+    res.status(200).send({data: friend.gifts.id(req.giftId)});
+});
 
 //delete a gift from the database
 router.delete('/:personId/gifts/:giftId', async(req, res, next)=>{

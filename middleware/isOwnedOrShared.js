@@ -3,7 +3,7 @@
 
 const Person = require('../models/Person.js'); //get the model to validate
 const ForbiddenException = require('../exceptions/Forbidden.js'); //get the exception to throw
-const debug = require('debug')('giftr:Person Owning or Shared MW')
+// const debug = require('debug')('giftr:Person Owning or Shared MW')
 
 module.exports = async (req, res, next) =>{
     // try{

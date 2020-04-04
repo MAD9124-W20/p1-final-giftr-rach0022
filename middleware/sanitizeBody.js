@@ -36,6 +36,6 @@ module.exports = (req,res,next) => {
     const sanitizedBody = stripTags(attributes);
 
     req.sanitizedBody = sanitizedBody; //set the new sanitized body without mutating the original data
-    logger.log('info',req.body);
+    // logger.log('info',req.body);
     next(); //call the next function in the request loop
 }

@@ -28,7 +28,7 @@ module.exports  = (req, res, next) =>{
         if(!token) throw new UnauthorizedException('Missing Bearer Token');
         const payload = JWT.verify(token, JWTPrivateKey);
         req.user = payload;
-        console.log(payload);
+        // console.log(payload);
         next();
     } catch (err) {
         //if the JWT does not validate properly

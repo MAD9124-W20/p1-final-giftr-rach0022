@@ -9,7 +9,7 @@ const logger = require('../startup/logger.js');
 module.exports = async (req, res, next) =>{
     //get the id from the parameter of the url request or from the sanitizedBody if not supplied
     const giftId = req.params.giftId; // ? req.params.giftId : req.sanitizedBody.giftId;
-    logger.log('info',req.params);
+    // logger.log('info',req.params);
 
     //find a match to the person from the person id validation
     const match = await Person.findById(req.personId, (err, data)=>{
