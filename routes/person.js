@@ -79,24 +79,24 @@ router.put('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, n
 });
 
 router.patch('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, next) =>{
-    try{
-        const person = await Person.findByIdAndUpdate(
-            req.personId,
-            req.sanitizedBody,
-            {
-                new: true,
-                runValidators: true,
-                useFindAndModify: false //taken from mongo docs
-            },
-            (err, data) => {
-                logger.log('info',err, data);
-                if(err) next(err); //if an error occurs send it to error handler
-                res.status(200).send({data})
-            }
-        )
-    } catch(err){
-        next(err);
-    }
+    // try{
+    const person = await Person.findByIdAndUpdate(
+        req.personId,
+        req.sanitizedBody,
+        {
+            new: true,
+            runValidators: true,
+            useFindAndModify: false //taken from mongo docs
+        },
+        (err, data) => {
+            logger.log('info',err, data);
+            if(err) next(err); //if an error occurs send it to error handler
+            res.status(200).send({data})
+        }
+    );
+    // } catch(err){
+    //     next(err);
+    // }
 });
 
 
