@@ -1,4 +1,5 @@
 ### Bugs: 
+- [ ] Whenever I send a request from a website all the data I send is null
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
 - [x] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
 
