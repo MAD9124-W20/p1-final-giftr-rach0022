@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=giftr* PORT=6060 NODE_ENV=development nodemon app.js"
+    "dev": "DEBUG=giftr* PORT=6060 NODE_ENV=development APP_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon app.js"
   },
   "repository": {
     "type": "git",

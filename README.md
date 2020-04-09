@@ -15,6 +15,7 @@
 - [x] start compressing the payloads by using the npm package compression
 - [x] update all my security middleware as per the week 11 guidelines
 - [x] look into helmet to see if it worth using
+- [ ] change PATCH auth route to change password only checking if the user is logged in and then change the password (do not make them give the old password and email to relog in)
 
 ### Questions for Robert:
 - [ ] Should I be removing the owner property out of PATCH?
@@ -24,11 +25,11 @@
 - [ ] How Do i set the default owner of a person to the user that is currently logged in
 
 ### Next Steps Logically:
-- [ ] go through the testing with postman module on the mad9124 website
+- [x] go through the testing with postman module on the mad9124 website
 - [ ] add an expiry to the JSONWebTokens (about an hour/ day) to require the user to log in
-- [ ] make sure you test all happy/ failure paths for the program (user logged in vs not, wrong user logged in, wrong person id, wrong gift id, expired authorization token)
-- [ ] remove any debug statements with sensitive user data
-- [ ] make a checklist of the requirements and see if its fufilled
+- [x] make sure you test all happy/ failure paths for the program (user logged in vs not, wrong user logged in, wrong person id, wrong gift id, expired authorization token)
+- [x] remove any debug statements with sensitive user data
+- [x] make a checklist of the requirements and see if its fufilled
 
 ### Person Router:
 - [x] Implemented

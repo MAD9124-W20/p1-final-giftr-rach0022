@@ -44,47 +44,59 @@ router.get('/:personId', isPersonOwnedOrShared, async (req, res, next) =>{
 //create a new gift, use the info from the sanitized body but also use the info
 //about the owner from the authorize middleware
 router.post('/', sanitizeBody, async(req, res, next) => {
-    req.sanitizedBody.owner = req.user._id; //add the user id onto the sanitized body 
-    let newPerson = new Person(req.sanitizedBody);
-    await newPerson.save();
-
-    res.status(201).send({data: newPerson});
+    try{
+        req.sanitizedBody.owner = req.user._id; //add the user id onto the sanitized body 
+        let newPerson = new Person(req.sanitizedBody);
+        await newPerson.save();
+        res.status(201).send({data: newPerson});
+    }catch(err){
+        next(err);
+    } 
 });
 
 //NOT WORKING, WILL NUKE THE PROPERTIES OF THE PERSON
 router.put('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, next) =>{
     //how to check if the person owns the document being updated
     //put the owner on the sanitized body from the auth token
-    req.sanitizedBody.owner = req.user._id;
-    logger.log('info',req.sanitizedBody, req.personId);
-    const person = await Person.findByIdAndUpdate(
-        req.personId,
-        req.sanitizedBody,
-        {
-            new: true,
-            runValidators: true,
-            overwrite: true,
-            useFindAndModify: false //taken from mongo docs
-        }
-    );
-    res.status(200).send({data: person});
+    try{
+        req.sanitizedBody.owner = req.user._id;
+        logger.log('info',req.sanitizedBody, req.personId);
+        const person = await Person.findByIdAndUpdate(
+            req.personId,
+            req.sanitizedBody,
+            {
+                new: true,
+                runValidators: true,
+                overwrite: true,
+                useFindAndModify: false //taken from mongo docs
+            }
+        );
+        res.status(200).send({data: person});
+    }catch(err){
+        next(err);
+    }
+    
 });
 
 router.patch('/:personId', isPersonOwnedOrShared, sanitizeBody, async (req, res, next) =>{
-    const person = await Person.findByIdAndUpdate(
-        req.personId,
-        req.sanitizedBody,
-        {
-            new: true,
-            runValidators: true,
-            useFindAndModify: false //taken from mongo docs
-        },
-        (err, data) => {
-            logger.log('info',err, data);
-            if(err) next(err); //if an error occurs send it to error handler
-            res.status(200).send({data})
-        }
-    )
+    try{
+        const person = await Person.findByIdAndUpdate(
+            req.personId,
+            req.sanitizedBody,
+            {
+                new: true,
+                runValidators: true,
+                useFindAndModify: false //taken from mongo docs
+            },
+            (err, data) => {
+                logger.log('info',err, data);
+                if(err) next(err); //if an error occurs send it to error handler
+                res.status(200).send({data})
+            }
+        )
+    } catch(err){
+        next(err);
+    }
 });
 
 
