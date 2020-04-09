@@ -9,7 +9,7 @@ module.exports = () => {
   let connectionString = `${scheme}://${credentials}${host}`
 
   if (scheme === 'mongodb') {
-    connectionString += `:${port}/${name}`
+    connectionString += `:${port}/${name}?authSource=${authSource}`
   } else {
     connectionString += `/${authSource}?retryWrites=true&w=majority`
   }
