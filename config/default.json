@@ -3,7 +3,8 @@
     "db": {
       "host": "localhost",
       "port": "27017",
-      "dbName": "mad9124-rach0022"
+      "name": "mad9124-rach0022",
+      "scheme": "mongodb"
     },
     "JWT": {
       "saltRounds": 14

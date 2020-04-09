@@ -1,18 +1,36 @@
-// const debug = require('debug')('giftr:database-startup');
-const logger = require('./logger.js');
-const config = require('config');
-const mongoose = require('mongoose');
-const dbConfig = config.get('db');
+const config = require('config')
+const logger = require('./logger')
+const mongoose = require('mongoose')
 
-module.exports = () =>{
-    mongoose
-    .connect(`mongodb://${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`, {
+module.exports = () => {
+  const {scheme, host, port, name, username, password, authSource} = config.get('db')
+  const credentials = username && password ? `${username}:${password}@` : ''
+
+  let connectionString = `${scheme}://${credentials}${host}`
+
+  if (scheme === 'mongodb') {
+    connectionString += `:${port}/${name}`
+  } else {
+    connectionString += `/${authSource}?retryWrites=true&w=majority`
+  }
+  logger.log('info', connectionString);
+
+  mongoose
+    .connect(
+      connectionString,
+      {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        dbName: name
+      }
+    )
+    .then(() => {
+      logger.log('info', `Connected to MongoDB @ ${name}...`)
     })
-    .then(()=> logger.log('info', 'Connected to MongoDB...'))
-    .catch(err =>{
-        logger.log('error', 'Problem connecting to MongoDB', err);
-        process.exit(1);
-    });
-};
+    .catch(err => {
+      logger.log('error', `Error connecting to MongoDB ...`, err)
+      process.exit(1)
+    })
+}
