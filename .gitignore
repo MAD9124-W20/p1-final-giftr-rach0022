@@ -2,5 +2,5 @@
 /data
 .DS_Store
 serverLog.txt
-error.log
-combined.log
+/logs/error.log
+/logs/combined.log
