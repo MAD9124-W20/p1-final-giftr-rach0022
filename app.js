@@ -18,7 +18,8 @@ app.use(require('compression')());
 
 //we will throw the authorization middleware onto all friend and gift routes
 app.use(express.json()); //allow the app to use json() parser for the requests
-app.use(sanitizeMongo()); //catchall to just sanitize all data for mongo 
+app.use(sanitizeMongo()); //catchall to just sanitize all data for mongo
+app.get('/', (req, res) => res.status(200).send({data: {healthStatus: 'UP'}})) //health check for aws server
 app.use('/auth', require('./routes/auth.js')); //use the auth route to create and cerify users turn on when implemented
 
 //add the person and the gift routes (gift routes need to validate the person id)
@@ -31,5 +32,7 @@ app.use(require('./middleware/logErrors.js')); //log the errors before we pass i
 app.use(require('./middleware/errorHandler.js'));
 
 
-const port = process.env.PORT || 3030;
-app.listen(port, () => logger.log('info',`Server listening on port: ${port}`));
+// const port = process.env.PORT || 3030;
+// app.listen(port, () => logger.log('info',`Server listening on port: ${port}`));
+
+module.exports = app;

@@ -1,6 +1,5 @@
 {
   "JWT": {
-    "secretkey": "APP_JWTKEY"
+    "secretkey": "API_JWTKEY"
   }
 }
-  
