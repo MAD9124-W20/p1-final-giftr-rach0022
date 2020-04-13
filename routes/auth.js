@@ -22,8 +22,8 @@ router.post('/users', sanitizeBody, async(req, res, next) =>{
 //to verify the user is the user on all subsequent routes
 router.post('/tokens', sanitizeBody, async(req, res, next) =>{
     //user object destucturing to get the email and the password
+    const {email, password} = req.sanitizedBody;
     try{
-        const {email, password} = req.sanitizedBody;
         const user = await User.authenticate(email, password);
         if(!user) throw new UnauthenticatedException('Incorrect email or password');
         res.status(202).send({data: {token: user.generateAuthToken()}}) //send back the status code of acceptted
@@ -52,19 +52,13 @@ router.patch('/users/me', sanitizeBody, authorize, async(req, res, next) =>{
     try{
         //coding happy path first (user is logged in use only new password)
         const {password} = req.sanitizedBody;
-        // const {newPassword} = req.sanitizedBody; 
-        // const user = await User.authenticate(req.user.email, req.user.password);  
-        const user = User.findById(req.user._id);
+        const user = User.find(req.user._id);
+        console.log(user);
 
-        // //check if the supplied email and password are the same
-        // if(!user) throw new UnauthenticatedException();
-        // // debug(user._id, req.user._id);
-
-        // //check if the user supplied info is the same as the logged in user
-        // if(req.user._id != user._id) throw new UnauthenticatedException(' or user does not match logged in user');
-        // debug(user);
-        user.password = newPassword;
-        user.save();
+        user.password = password;
+        user.save().then((err, data)=> {
+            console.log('user is saved');
+        });
         //now that we have the user just update the password and save
         res.status(200).send({data: user});
         

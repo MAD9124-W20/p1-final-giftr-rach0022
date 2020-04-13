@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=giftr* API_PORT=6060 NODE_ENV=development APP_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon server.js",
-    "stage": "DEBUG=giftr* API_PORT=6060 NODE_ENV=stage APP_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon server.js"
+    "dev": "DEBUG=giftr* API_PORT=6060 NODE_ENV=development API_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon server.js",
+    "stage": "DEBUG=giftr* API_PORT=6060 NODE_ENV=stage API_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon server.js",
+    "docker": "docker build --tag=giftr-api-w20:latest . && docker-compose up -d && docker tag giftr-api-w20 rach0022/giftr-api-w20 && docker push rach0022/giftr-api-w20 "
   },
   "repository": {
     "type": "git",

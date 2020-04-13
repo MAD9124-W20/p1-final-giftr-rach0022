@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
         ref: 'User'
     }],
     gifts: [Gift.schema], //using Gifts as a sub document
-    imageURL: {
+    imageUrl: {
         type: String,
         trim: true,
         maxlength: 1024

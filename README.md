@@ -6,7 +6,7 @@
 - [x] Whenever I send a request from a website all the data I send is null
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
 - [x] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
-- [ ] PATCH user route not working without user giving email and password to reauthenticate
+- [ ] PATCH user route not working without user giving email and password to reauthenticate || await user.save().then() is not a function WHAT?? 
 
 ### Changes to Make For the Final:
 - [x] make gifts a sub document, ask robert to go over what changes i need to make
@@ -94,3 +94,4 @@
 - [x] Add user authentication middleware and also the user routes to POST ( /auth/users create new user && /auth/tokens log in) and GET (get currently logged in user /auth/users/me)
 - [x] add PATCH route (to change password /auth/users/me) || having difficulties, first get the happy path (user is logged in and supplies a new password) working first, then add in the check for the old password and also the email for the account || nevermind while coding the happy path i figured out how to make sure the usr is the same as the logged in user and make the user have to supply the email and password
 - [ ] now to add the person model and a gift model to test out the person and gift routes
+- [x] image url is not working for either paths, make sure it is capitilized right

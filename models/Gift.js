@@ -13,10 +13,10 @@ const schema = new mongoose.Schema({
         min: 100,
         default: 1000
     },
-    imageURL: {
+    imageUrl: {
         type: String,
         trim: true,
-        minlength: 1024
+        maxlength: 1024
     },
     store: {
         name: {
