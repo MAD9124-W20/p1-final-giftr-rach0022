@@ -52,7 +52,7 @@ router.patch('/users/me', sanitizeBody, authorize, async(req, res, next) =>{
     try{
         //coding happy path first (user is logged in use only new password)
         const {password} = req.sanitizedBody;
-        const user = User.find(req.user._id);
+        const user = await User.findById(req.user._id);
         console.log(user);
 
         user.password = password;
