@@ -6,7 +6,12 @@
 - [x] Whenever I send a request from a website all the data I send is null
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
 - [x] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
-- [ ] PATCH user route not working without user giving email and password to reauthenticate || await user.save().then() is not a function WHAT?? 
+- [x] PATCH user route not working without user giving email and password to reauthenticate || await user.save().then() is not a function WHAT?? || jeez.. forgot await
+- [ ] AWS is not working from postman but when testing with cURL commands like below it works. Need to ask Robert: 
+````zsh
+curl -H "Content-Type: application/json" --data-ascii "@req.json" "EC2Co-EcsEl-1AH0Z1LDB9VES-797724042.us-east-1.elb.amazonaws.com/auth/users"
+````
+- req.json can contain whatever request I need at the time, need to find out how to add authorization headers in cURL to test if i keep having issues
 
 ### Changes to Make For the Final:
 - [x] make gifts a sub document, ask robert to go over what changes i need to make
