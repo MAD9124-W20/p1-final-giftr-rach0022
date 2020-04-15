@@ -7,7 +7,8 @@
 - [x] PUT person will verify correctly but delete all required properties for some reason, did not work in assignment 3 try and get working code from robert || started working after i deleted the callback function
 - [x] DISABLED PATCH Gift route becuase i do not understand how to update subdocuments
 - [x] PATCH user route not working without user giving email and password to reauthenticate || await user.save().then() is not a function WHAT?? || jeez.. forgot await
-- [ ] AWS is not working from postman but when testing with cURL commands like below it works. Need to ask Robert: 
+- [x] AWS is not working from postman but when testing with cURL commands like below it works. Need to ask Robert:  || DONT USE DOCKER NPM COMMAND i might have messed it up
+- [x] i do not get unauthorized when trying to delete a person i do not own i believe || nope it was working I was just using the wrong id so it always came up as did not exist because it did not exist
 ````zsh
 curl -H "Content-Type: application/json" --data-ascii "@req.json" "EC2Co-EcsEl-1AH0Z1LDB9VES-797724042.us-east-1.elb.amazonaws.com/auth/users"
 ````
