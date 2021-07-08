@@ -1,0 +1,6 @@
+/node_modules
+/data
+.DS_Store
+serverLog.txt
+/logs/error.log
+/logs/combined.log

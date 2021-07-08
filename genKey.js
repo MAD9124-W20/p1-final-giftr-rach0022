@@ -1,0 +1,2 @@
+//run this to get a new secret key to use, will invalidate all old authorization tokens if we change the secret key
+console.log([...Array(30)].map(e => ((Math.random() * 36) | 0).toString(36)).join(''));

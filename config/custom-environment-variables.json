@@ -1,0 +1,5 @@
+{
+  "JWT": {
+    "secretkey": "API_JWTKEY"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "p1-final-giftr-rach0022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=giftr* API_PORT=6060 NODE_ENV=development API_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon server.js",
+    "stage": "DEBUG=giftr* API_PORT=6060 NODE_ENV=stage API_JWTKEY=a6ycawhx7f684jkm041qlvm6ghux6n nodemon server.js",
+    "docker": "docker build --tag=giftr-api-w20:latest . && docker-compose up -d && docker tag giftr-api-w20 rach0022/giftr-api-w20 && docker push rach0022/giftr-api-w20 "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MAD9124-W20/p1-final-giftr-rach0022.git"
+  },
+  "keywords": [],
+  "author": "Ravi Rachamalla <rach0022@algonquinlive.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MAD9124-W20/p1-final-giftr-rach0022/issues"
+  },
+  "homepage": "https://github.com/MAD9124-W20/p1-final-giftr-rach0022#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "compression": "^1.7.4",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.0",
+    "helmet": "^3.22.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.6",
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemon": "^2.0.2",
+    "validator": "^13.0.0",
+    "winston": "^3.2.1",
+    "xss": "^1.0.6"
+  }
+}
